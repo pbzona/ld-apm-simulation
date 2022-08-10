@@ -5,6 +5,7 @@ from simulation.config import MAX_REQ_DELAY, MIN_REQ_DELAY
 from simulation.user import User
 
 def run_traffic_simulation(app):
+    sleep(5) # Delay to wait for app server to start
     while True:
         try:
             user = User(app)
