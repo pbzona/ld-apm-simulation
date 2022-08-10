@@ -3,8 +3,8 @@ Description=LaunchDarkly New Relic integration simulation
 
 [Service]
 User=ubuntu
-WorkingDirectory=/home/ubuntu/ld-apm-simulation
-ExecStart=/bin/bash -c 'cd /home/ubuntu/ld-apm-simulation/ && \
+WorkingDirectory=/home/ubuntu/ld-new-relic-simulation
+ExecStart=/bin/bash -c 'cd /home/ubuntu/ld-new-relic-simulation/ && \
                             source venv/bin/activate && \
                             NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program python3 app.py'
 

@@ -6,6 +6,12 @@ then
   exit 1
 fi
 
+# Including this step because hostname shows up in New Relic
+# Change this if you prefer something else
+echo "Setting hostname..."
+host_name = "LaunchDarkly-NewRelic-App"
+hostnamectl set-hostname $host_name
+
 echo "Installing dependencies..."
 sudo apt update
 sudo apt install python3-pip

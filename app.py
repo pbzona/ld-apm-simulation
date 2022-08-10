@@ -9,14 +9,15 @@ from simulation.ops import increase_memory_usage
 from simulation.traffic import run_traffic_simulation
 
 load_dotenv()
-LDClient.get_instance() # Instantiates the client
+LDClient.instantiate()
 app = Flask(__name__)
 
+# Base route for test calls to server
 @app.route("/")
 def index():
-    # Some behavior here
-    return "Hello from the APM simulation app"
+    return "Hello from the LD New Relic simulation app"
 
+# Posting a LD user context to this route increases memory usage temporarily
 @app.route("/memory", methods=["POST"])
 def increase_memory():
     user_context = request.json

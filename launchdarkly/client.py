@@ -5,6 +5,11 @@ from ldclient.config import Config
 class LDClient:
     __instance = None
 
+    # Creating this method solely for code readability in the app.py file
+    @staticmethod
+    def instantiate():
+        LDClient.get_instance()
+
     @staticmethod
     def get_instance():
         if LDClient.__instance == None:

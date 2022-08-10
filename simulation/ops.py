@@ -4,7 +4,7 @@ import string
 from launchdarkly.client import LDClient
 from simulation.config import MEMORY_MB_MAX, MEMORY_MB_MIN, MEMORY_TIME_MAX, MEMORY_TIME_MIN
 
-# Increases memory usage by given number of MB for a given duration in seconds
+# Increases memory usage arbitrarily to illustrate changes to memory as a performance metric
 def increase_memory_usage(ctx):
     ld = LDClient.get_instance()
     usage_in_mb = randint(MEMORY_MB_MIN, MEMORY_MB_MAX)
@@ -16,11 +16,11 @@ def increase_memory_usage(ctx):
     # don't come into effect and reduce memory usage
     random_char = choice(string.ascii_letters)
 
-    # Factor by which to increase memory usage
-    increase_factor = ld.variation('memory-increase-intensity', ctx, 3)
-
     # Allocates a number of MB of memory, multiplied by a constant if flag is on
     if memory_spiked:
+        # Factor by which to increase memory usage
+        increase_factor = ld.variation('memory-increase-factor', ctx, 3)
+
         memory = random_char * 1024 * 1024 * usage_in_mb * increase_factor
     else:
         memory = random_char * 1024 * 1024 * usage_in_mb
