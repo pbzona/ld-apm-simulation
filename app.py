@@ -2,12 +2,14 @@ import logging
 from threading import Thread
 from flask import Flask, request
 from dotenv import load_dotenv
+from launchdarkly.client import LDClient
 from simulation.config import TRAFFIC_THREADS
 from simulation.helpers import create_log_file
 from simulation.ops import increase_memory_usage
 from simulation.traffic import run_traffic_simulation
 
 load_dotenv()
+LDClient.get_instance() # Instantiates the client
 app = Flask(__name__)
 
 @app.route("/")
