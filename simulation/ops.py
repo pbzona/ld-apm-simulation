@@ -10,6 +10,7 @@ def increase_memory_usage(ctx):
     usage_in_mb = randint(MEMORY_MB_MIN, MEMORY_MB_MAX)
     duration_seconds = randint(MEMORY_TIME_MIN, MEMORY_TIME_MAX)
 
+    # Boolean indicating whether the memory increase should be applied
     memory_spiked = ld.variation('memory-intensive-feature', ctx, False)
 
     # Generate a different random char each time to ensure built in optimizations
